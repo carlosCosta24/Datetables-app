@@ -30,6 +30,23 @@ namespace Datetables_app
             Employees.Rows.Add(4, "Koda", "Costa", 'M', 200, new DateTime(2025, 1, 1));
 
 
+            //Aggregate functions:
+            int    EmployeesCount = 0;
+            double TotalSalaries = 0;
+            double AvgSalaries = 0;
+            double MinSalary = 0;
+            double MaxSalary = 0;
+
+
+
+            EmployeesCount = Employees.Rows.Count;
+            TotalSalaries = Convert.ToDouble(Employees.Compute("sum(Salary)", string.Empty));
+            AvgSalaries = Convert.ToDouble(Employees.Compute("avg(Salary)", string.Empty));
+            MinSalary = Convert.ToDouble(Employees.Compute("min(Salary)", string.Empty));
+            MaxSalary = Convert.ToDouble(Employees.Compute("max(Salary)", string.Empty));
+
+
+
             Console.WriteLine("Employees List: ");
             foreach (DataRow Row in Employees.Rows) {
 
@@ -37,7 +54,15 @@ namespace Datetables_app
                     Row["ID"] ,Row["FirstName"], Row["LastName"], Row["Gender"],Row["Salary"], Row["DateOfBirth"]);
             
             }
-            
+
+            Console.WriteLine("Employees coutn: " + EmployeesCount);
+            Console.WriteLine("Total Salaries: " + TotalSalaries );
+            Console.WriteLine("Avarg Salary: " + AvgSalaries);
+            Console.WriteLine("Max Salary: " + MaxSalary);
+            Console.WriteLine("Minimum Salary: " + MinSalary);
+
+            Console.ReadKey();
+
 
 
 
