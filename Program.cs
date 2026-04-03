@@ -131,7 +131,7 @@ namespace Datetables_app
         static void Main(string[] args)
         {
 
-            DataTable Employees = new DataTable();
+            DataTable Employees = new DataTable("Employees");
             CreatCoulmn(Employees, typeof(int), "ID", true, "Employee ID", false, true);
             CreatCoulmn(Employees, typeof(string), "FirstName", false, "Employee FirstName", false, false);
             CreatCoulmn(Employees, typeof(string), "LastName", false,  "Employee LastName", false, false);
@@ -151,7 +151,7 @@ namespace Datetables_app
 
 
             //Department Datatable
-            DataTable Departments = new DataTable();
+            DataTable Departments = new DataTable("Departments");
             CreatCoulmn(Departments, typeof(int), "ID", true, "Department ID", false, true,1);
             CreatCoulmn(Departments, typeof(string), "DepartmentName", false, "Department Name", false, false);
 
@@ -176,15 +176,16 @@ namespace Datetables_app
             DataSet.Tables.Add(Employees);
             DataSet.Tables.Add(Departments);
 
-            //print dataset tables
-            foreach (DataRow Row in DataSet.Tables[0].Rows) {
+            //print dataset tables 
+            //access using Table Name
+            foreach (DataRow Row in DataSet.Tables["Employees"].Rows) {
 
                 Console.WriteLine("ID: {0}\t FirstName: {1}\t LastName: {2}\t Gender: {3}\t Salary:{4}\t BirthDate{5}\t",
                 Row[0], Row[1], Row[2], Row[3], Row[4], Row[5]);
 
             }
-
-            foreach (DataRow Row in DataSet.Tables[1].Rows)
+            //access using Table Name
+            foreach (DataRow Row in DataSet.Tables["Departments"].Rows)
             {
 
                 Console.WriteLine("ID: {0}\t DepartmentName: {1}\t",
