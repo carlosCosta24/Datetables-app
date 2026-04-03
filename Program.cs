@@ -148,6 +148,17 @@ namespace Datetables_app
             Employees.Rows.Add(null, "Ricardo", "Costa", 'M', 8000, new DateTime(1989, 7,23));
             Employees.Rows.Add(null, "Koda", "Costa", 'M', 200, new DateTime(2025, 1, 20));
 
+            //data view
+            DataView EmployessView = Employees.DefaultView;
+            Console.WriteLine("Employees Data view: ");
+            for (int i = 0; i < EmployessView.Count; i++) {
+
+                Console.WriteLine("{0}, {1}, {2},{3}, {4},{5}", EmployessView[i][0], EmployessView[i][1], EmployessView[i][2],
+                    EmployessView[i][3], EmployessView[i][4], EmployessView[i][5]);
+
+
+            }
+
             //creating the columns: 
             /* Employees.Columns.Add("ID", typeof(int));
              Employees.Columns.Add("FirstName", typeof(string));
