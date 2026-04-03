@@ -125,9 +125,13 @@ namespace Datetables_app
             Employees.Columns.Add("Salary", typeof(float));
             Employees.Columns.Add("DateOfBirth", typeof(DateTime));
 
+            DataColumn[]  PrimaryKey = new DataColumn[1];
+            PrimaryKey[0] = Employees.Columns["ID"];
+            Employees.PrimaryKey = PrimaryKey;
+
             // filling in the date 
             Employees.Rows.Add(1, "Carlos", "Costa", 'M', 5000, new DateTime(1998, 7, 8));
-            Employees.Rows.Add(2, "Alhoa", "Costa", 'F', 500, new DateTime(2022, 5, 8));
+            Employees.Rows.Add(1, "Alhoa", "Costa", 'F', 500, new DateTime(2022, 5, 8));
             Employees.Rows.Add(3, "Ricardo", "Costa", 'M', 8000, new DateTime(1989, 7, 25));
             Employees.Rows.Add(4, "Koda", "Costa", 'M', 200, new DateTime(2025, 1, 1));
             //filtering date
@@ -152,7 +156,9 @@ namespace Datetables_app
 
             //Update(Employees, 3, "Karla", 200);
 
-            Employees.Clear();
+            //Employees.Clear();
+            //PrintList(Employees);
+
             PrintList(Employees);
 
 
