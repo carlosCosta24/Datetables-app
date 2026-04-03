@@ -95,6 +95,23 @@ namespace Datetables_app
             }
         
         }
+        static void Update(DataTable Data,int ID, string FirstName, double Salary) {
+
+            DataRow[] Rows = Data.Select($"ID = '{ID}'");
+
+            foreach (var Row in Rows) {
+                Row["FirstName"] = FirstName;
+                Row["Salary"] = Salary;
+            }
+            //Data.AcceptChanges();
+            foreach (DataRow Row in Data.Rows)
+            {
+                Console.WriteLine("ID: {0}\t FirstName: {1}\t LastName: {2}\t Gender: {3}\t Salary:{4}\t BirthDate{5}\t",
+                 Row[0], Row[1], Row[2], Row[3], Row[4], Row[5]);
+            }
+
+
+        }
         static void Main(string[] args)
         {
 
@@ -131,7 +148,9 @@ namespace Datetables_app
             //Employees = Employees.DefaultView.ToTable();
             //PrintList(Employees);
 
-            Delete(Employees, "ID='4'");
+            //Delete(Employees, "ID='4'");
+
+            Update(Employees, 3, "Karla", 200);
 
 
 
