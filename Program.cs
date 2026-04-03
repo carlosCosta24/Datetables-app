@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Xml.XPath;
+using System.Data.SqlClient;
+using System.Threading;
+using System.Data.Common;
 
 namespace Datetables_app
 {
@@ -130,69 +133,71 @@ namespace Datetables_app
         }
         static void Main(string[] args)
         {
+            /*   
+                DataTable Employees = new DataTable("Employees");
+                CreatCoulmn(Employees, typeof(int), "ID", true, "Employee ID", false, true);
+                CreatCoulmn(Employees, typeof(string), "FirstName", false, "Employee FirstName", false, false);
+                CreatCoulmn(Employees, typeof(string), "LastName", false, "Employee LastName", false, false);
+                CreatCoulmn(Employees, typeof(char), "Gender", false, "Gender", false, false);
+                CreatCoulmn(Employees, typeof(float), "Salary", false, "Salary Amount", false, false);
+                CreatCoulmn(Employees, typeof(DateTime), "BirthDate", false, "Employee Birth Date", false, false);
 
-            DataTable Employees = new DataTable("Employees");
-            CreatCoulmn(Employees, typeof(int), "ID", true, "Employee ID", false, true);
-            CreatCoulmn(Employees, typeof(string), "FirstName", false, "Employee FirstName", false, false);
-            CreatCoulmn(Employees, typeof(string), "LastName", false,  "Employee LastName", false, false);
-            CreatCoulmn(Employees, typeof(char), "Gender", false, "Gender", false, false);
-            CreatCoulmn(Employees, typeof(float), "Salary", false, "Salary Amount", false, false);
-            CreatCoulmn(Employees, typeof(DateTime), "BirthDate", false, "Employee Birth Date", false, false);
+                DataColumn[] PrimaryKey = new DataColumn[1];
+                PrimaryKey[0] = Employees.Columns["ID"];
+                Employees.PrimaryKey = PrimaryKey;
 
-            DataColumn[] PrimaryKey = new DataColumn[1];
-            PrimaryKey[0] = Employees.Columns["ID"];
-            Employees.PrimaryKey = PrimaryKey;
-
-            Employees.Rows.Add(null, "Carlos", "Costa", 'M', 5000, new DateTime(1998, 7, 9));
-            Employees.Rows.Add(null, "Alhoa", "Costa", 'F', 500, new DateTime(2022, 5, 2));
-            Employees.Rows.Add(null, "Ricardo", "Costa", 'M', 8000, new DateTime(1989, 7,23));
-            Employees.Rows.Add(null, "Koda", "Costa", 'M', 200, new DateTime(2025, 1, 20));
-
-
-
-            //Department Datatable
-            DataTable Departments = new DataTable("Departments");
-            CreatCoulmn(Departments, typeof(int), "ID", true, "Department ID", false, true,1);
-            CreatCoulmn(Departments, typeof(string), "DepartmentName", false, "Department Name", false, false);
+                Employees.Rows.Add(null, "Carlos", "Costa", 'M', 5000, new DateTime(1998, 7, 9));
+                Employees.Rows.Add(null, "Alhoa", "Costa", 'F', 500, new DateTime(2022, 5, 2));
+                Employees.Rows.Add(null, "Ricardo", "Costa", 'M', 8000, new DateTime(1989, 7, 23));
+                Employees.Rows.Add(null, "Koda", "Costa", 'M', 200, new DateTime(2025, 1, 20));
 
 
-            DataColumn[] DepartmentPrimaryKey = new DataColumn[1];
-            DepartmentPrimaryKey[0] = Departments.Columns["ID"];
-            Departments.PrimaryKey = DepartmentPrimaryKey;
 
-            Departments.Rows.Add(null, "Engineering");
-            Departments.Rows.Add(null, "R&D");
-            Departments.Rows.Add(null, "Markting");
+                //Department Datatable
+                DataTable Departments = new DataTable("Departments");
+                CreatCoulmn(Departments, typeof(int), "ID", true, "Department ID", false, true, 1);
+                CreatCoulmn(Departments, typeof(string), "DepartmentName", false, "Department Name", false, false);
 
-            //data view
-            DataView DepartmentsView = Departments.DefaultView;
-            Console.WriteLine("Departments Data view: ");
-            for (int i = 0; i < DepartmentsView.Count; i++) {
 
-                Console.WriteLine("{0}, {1}", DepartmentsView[i][0], DepartmentsView[i][1]);
-            }
+                DataColumn[] DepartmentPrimaryKey = new DataColumn[1];
+                DepartmentPrimaryKey[0] = Departments.Columns["ID"];
+                Departments.PrimaryKey = DepartmentPrimaryKey;
 
-            DataSet DataSet = new DataSet();
-            DataSet.Tables.Add(Employees);
-            DataSet.Tables.Add(Departments);
+                Departments.Rows.Add(null, "Engineering");
+                Departments.Rows.Add(null, "R&D");
+                Departments.Rows.Add(null, "Markting");
 
-            //print dataset tables 
-            //access using Table Name
-            foreach (DataRow Row in DataSet.Tables["Employees"].Rows) {
+                //data view
+                DataView DepartmentsView = Departments.DefaultView;
+                Console.WriteLine("Departments Data view: ");
+                for (int i = 0; i < DepartmentsView.Count; i++)
+                {
 
-                Console.WriteLine("ID: {0}\t FirstName: {1}\t LastName: {2}\t Gender: {3}\t Salary:{4}\t BirthDate{5}\t",
-                Row[0], Row[1], Row[2], Row[3], Row[4], Row[5]);
+                    Console.WriteLine("{0}, {1}", DepartmentsView[i][0], DepartmentsView[i][1]);
+                }
 
-            }
-            //access using Table Name
-            foreach (DataRow Row in DataSet.Tables["Departments"].Rows)
-            {
+                DataSet DataSet = new DataSet();
+                DataSet.Tables.Add(Employees);
+                DataSet.Tables.Add(Departments);
 
-                Console.WriteLine("ID: {0}\t DepartmentName: {1}\t",
-                Row[0], Row[1]);
+                //print dataset tables 
+                //access using Table Name
+                foreach (DataRow Row in DataSet.Tables["Employees"].Rows)
+                {
 
-            }
+                    Console.WriteLine("ID: {0}\t FirstName: {1}\t LastName: {2}\t Gender: {3}\t Salary:{4}\t BirthDate{5}\t",
+                    Row[0], Row[1], Row[2], Row[3], Row[4], Row[5]);
 
+                }
+                //access using Table Name
+                foreach (DataRow Row in DataSet.Tables["Departments"].Rows)
+                {
+
+                    Console.WriteLine("ID: {0}\t DepartmentName: {1}\t",
+                    Row[0], Row[1]);
+
+                }
+                */
 
 
 
@@ -244,7 +249,29 @@ namespace Datetables_app
 
             //PrintList(Employees);
 
+            //Creating DataAdapter
 
+            string ConnectionString = "server=.;database=VehicleMakesDB; user id= sa; password=123456";
+            DataSet Cars = new DataSet("Cars");
+            string Query = "select top 10 VehicleDetails.* from VehicleDetails;";
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, ConnectionString);
+            SqlConnection Connection = new SqlConnection(ConnectionString);
+            Connection.Open();
+            adapter.SelectCommand.Connection = Connection;
+            adapter.Fill(Cars, "VehicleDetails");
+            Connection.Close();
+            DataTable Table = Cars.Tables["VehicleDetails"];
+            foreach (DataRow Row in Table.Rows) {
+                Console.WriteLine("ID: {0}, CarName: {1}", Row["ID"], Row["Vehicle_Display_Name"]);
+            }
+
+            //Make changes offline on dataset
+            /*
+            Connection.Open();
+            adapter.UpdateCommand.Connection = Connection;
+            adapter.Update(Cars, "VehicleDetails");
+            Connection.Close();
+            */
 
 
 
