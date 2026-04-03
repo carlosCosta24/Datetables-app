@@ -150,7 +150,10 @@ namespace Datetables_app
 
             //Delete(Employees, "ID='4'");
 
-            Update(Employees, 3, "Karla", 200);
+            //Update(Employees, 3, "Karla", 200);
+
+            Employees.Clear();
+            PrintList(Employees);
 
 
 
