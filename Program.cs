@@ -104,9 +104,19 @@ namespace Datetables_app
             //PrintList(Employees);
             //PrintAgregate(Employees);
             //Print all M Employees
-            PrintAgregate(Employees, "Gender='M'");
-            PrintAgregate(Employees, "Gender='M' or Gender='F'");
-            PrintAgregate(Employees, "ID='1'");
+            //PrintAgregate(Employees, "Gender='M'");
+            //PrintAgregate(Employees, "Gender='M' or Gender='F'");
+            //PrintAgregate(Employees, "ID='1'");
+
+            //Sorting 
+            Employees.DefaultView.Sort = "ID desc";
+            Employees = Employees.DefaultView.ToTable();
+            PrintList(Employees);
+
+            Employees.DefaultView.Sort = "FirstName asc";
+            Employees = Employees.DefaultView.ToTable();
+            PrintList(Employees);
+
 
 
 
