@@ -148,34 +148,52 @@ namespace Datetables_app
             Employees.Rows.Add(null, "Ricardo", "Costa", 'M', 8000, new DateTime(1989, 7,23));
             Employees.Rows.Add(null, "Koda", "Costa", 'M', 200, new DateTime(2025, 1, 20));
 
+
+
+            //Department Datatable
+            DataTable Departments = new DataTable();
+            CreatCoulmn(Departments, typeof(int), "ID", true, "Department ID", false, true,1);
+            CreatCoulmn(Departments, typeof(string), "DepartmentName", false, "Department Name", false, false);
+
+
+            DataColumn[] DepartmentPrimaryKey = new DataColumn[1];
+            DepartmentPrimaryKey[0] = Departments.Columns["ID"];
+            Departments.PrimaryKey = DepartmentPrimaryKey;
+
+            Departments.Rows.Add(null, "Engineering");
+            Departments.Rows.Add(null, "R&D");
+            Departments.Rows.Add(null, "Markting");
+
             //data view
-            DataView EmployessView = Employees.DefaultView;
-            Console.WriteLine("Employees Data view: ");
-            for (int i = 0; i < EmployessView.Count; i++) {
+            DataView DepartmentsView = Departments.DefaultView;
+            Console.WriteLine("Departments Data view: ");
+            for (int i = 0; i < DepartmentsView.Count; i++) {
 
-                Console.WriteLine("{0}, {1}, {2},{3}, {4},{5}", EmployessView[i][0], EmployessView[i][1], EmployessView[i][2],
-                    EmployessView[i][3], EmployessView[i][4], EmployessView[i][5]);
+                Console.WriteLine("{0}, {1}", DepartmentsView[i][0], DepartmentsView[i][1]);
             }
 
-            Console.WriteLine("\n");
-            //Filter Dataview
-            EmployessView.RowFilter = "Gender = 'M'";
-            for (int i = 0; i < EmployessView.Count; i++)
+            DataSet DataSet = new DataSet();
+            DataSet.Tables.Add(Employees);
+            DataSet.Tables.Add(Departments);
+
+            //print dataset tables
+            foreach (DataRow Row in DataSet.Tables[0].Rows) {
+
+                Console.WriteLine("ID: {0}\t FirstName: {1}\t LastName: {2}\t Gender: {3}\t Salary:{4}\t BirthDate{5}\t",
+                Row[0], Row[1], Row[2], Row[3], Row[4], Row[5]);
+
+            }
+
+            foreach (DataRow Row in DataSet.Tables[1].Rows)
             {
 
-                Console.WriteLine("{0}, {1}, {2},{3}, {4},{5}", EmployessView[i][0], EmployessView[i][1], EmployessView[i][2],
-                    EmployessView[i][3], EmployessView[i][4], EmployessView[i][5]);
-            }
-            Console.WriteLine("\n");
-            //sorting
-            EmployessView.Sort = "FirstName asc";
+                Console.WriteLine("ID: {0}\t DepartmentName: {1}\t",
+                Row[0], Row[1]);
 
-            for (int i = 0; i < EmployessView.Count; i++)
-            {
-
-                Console.WriteLine("{0}, {1}, {2},{3}, {4},{5}", EmployessView[i][0], EmployessView[i][1], EmployessView[i][2],
-                    EmployessView[i][3], EmployessView[i][4], EmployessView[i][5]);
             }
+
+
+
 
 
             //creating the columns: 
