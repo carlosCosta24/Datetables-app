@@ -155,10 +155,17 @@ namespace Datetables_app
 
                 Console.WriteLine("{0}, {1}, {2},{3}, {4},{5}", EmployessView[i][0], EmployessView[i][1], EmployessView[i][2],
                     EmployessView[i][3], EmployessView[i][4], EmployessView[i][5]);
-
-
             }
 
+            Console.WriteLine("\n");
+            //Filter Dataview
+            EmployessView.RowFilter = "Gender = 'M'";
+            for (int i = 0; i < EmployessView.Count; i++)
+            {
+
+                Console.WriteLine("{0}, {1}, {2},{3}, {4},{5}", EmployessView[i][0], EmployessView[i][1], EmployessView[i][2],
+                    EmployessView[i][3], EmployessView[i][4], EmployessView[i][5]);
+            }
             //creating the columns: 
             /* Employees.Columns.Add("ID", typeof(int));
              Employees.Columns.Add("FirstName", typeof(string));
@@ -204,7 +211,7 @@ namespace Datetables_app
             //Employees.Clear();
             //PrintList(Employees);
 
-            PrintList(Employees);
+            //PrintList(Employees);
 
 
 
